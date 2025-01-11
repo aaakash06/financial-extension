@@ -1,3 +1,5 @@
+const fs = require("fs");
+
 document.getElementById("fillFields").addEventListener("click", async () => {
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
   chrome.scripting.executeScript({
@@ -7,15 +9,7 @@ document.getElementById("fillFields").addEventListener("click", async () => {
 });
 
 function fillFormFields() {
-  const fieldMappings = {
-    utilities: "82",
-    food: "873",
-    "rent or mortgage": "437",
-    clothing: "75",
-    "household necessities": "90",
-    "medical expenses": "90",
-  };
-
+  const fieldMappings = JSON.parse(fs.readFileSync("data.json", "utf8"));
   // Find all label elements
   const labels = document.getElementsByTagName("label");
 
