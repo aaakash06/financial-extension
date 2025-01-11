@@ -19,19 +19,17 @@ function fillFormFields() {
 
     // Check if this label matches any of our mappings
     for (const [key, value] of Object.entries(fieldMappings)) {
-      if (labelText.includes(key)) {
-        // Find the associated input
-        let input;
-        if (label.getAttribute("for")) {
-          input = document.getElementById(label.getAttribute("for"));
-        }
-        // If we found an input, fill it
-        if (input) {
-          input.value = value;
-          // Dispatch an input event to trigger any listeners
-          input.dispatchEvent(new Event("input", { bubbles: true }));
-          break;
-        }
+      // Find the associated input
+      let input;
+      if (label.getAttribute("for")) {
+        input = document.getElementById(label.getAttribute("for"));
+      }
+      // If we found an input, fill it
+      if (input) {
+        input.value = labelText.includes(key) ? value : 0;
+        // Dispatch an input event to trigger any listeners
+        input.dispatchEvent(new Event("input", { bubbles: true }));
+        break;
       }
     }
   }
