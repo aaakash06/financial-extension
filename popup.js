@@ -20,7 +20,8 @@ function fillFormFields() {
   const labels = document.getElementsByTagName("label");
 
   for (const label of labels) {
-    const labelText = label.textContent.trim().toLowerCase();
+    // Get all text content, including nested elements
+    const labelText = label.innerText.trim().toLowerCase();
 
     // Check if this label matches any of our mappings
     for (const [key, value] of Object.entries(fieldMappings)) {
