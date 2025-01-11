@@ -30,8 +30,6 @@ function fillFormFields() {
         let input;
         if (label.getAttribute("for")) {
           input = document.getElementById(label.getAttribute("for"));
-        } else {
-          input = label.querySelector("input");
         }
 
         // If we found an input, fill it
