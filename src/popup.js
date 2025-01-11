@@ -31,7 +31,6 @@ function fillFormFields() {
         if (label.getAttribute("for")) {
           input = document.getElementById(label.getAttribute("for"));
         }
-
         // If we found an input, fill it
         if (input) {
           input.value = value;
